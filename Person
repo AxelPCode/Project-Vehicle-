@@ -1,0 +1,51 @@
+class Person {
+    private String name;
+    private boolean hasDriverLicense;
+    private int age;
+    private int height;
+
+    public Person(String name, boolean hasDriverLicense, int age, int height) {
+        this.name = name;
+        this.hasDriverLicense = hasDriverLicense;
+        this.age = age;
+        this.height = height;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean hasDriverLicense() {
+        return hasDriverLicense;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public Person clone() {
+        return new Person(name, hasDriverLicense, age, height);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return hasDriverLicense == person.hasDriverLicense &&
+                age == person.age &&
+                height == person.height &&
+                name.equals(person.name);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Person [name=%10s | age=%02d | height=%02d | has license/%s]",
+                name, age, height, hasDriverLicense ? "license" : "no license");
+    }
+}
+
